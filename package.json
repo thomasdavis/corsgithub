@@ -17,7 +17,9 @@
     "url": "https://github.com/thomasdavis/corsgithub/issues"
   },
   "dependencies": {
+    "cors": "^2.2.0",
     "express": "^3.5.1",
-    "logfmt": "^1.1.2"
+    "logfmt": "^1.1.2",
+    "superagent": "^0.17.0"
   }
 }

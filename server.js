@@ -1,12 +1,17 @@
 // web.js
 var express = require("express");
+var cors = require('cors');
 var logfmt = require("logfmt");
 var app = express();
-
+var request = require("superagent");
 app.use(logfmt.requestLogger());
-
-app.get('/', function(req, res) {
-  res.send('Hello World!');
+app.use(cors);
+app.get('*', function(req, res) {
+  request
+  .get('https://raw.githubusercontent.com' +req.url)
+  .end(function(error, result){
+    res.send(result.text);
+  });
 });
 
 var port = Number(process.env.PORT || 5000);
