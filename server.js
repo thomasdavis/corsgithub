@@ -5,8 +5,9 @@ var logfmt = require("logfmt");
 var app = express();
 var request = require("superagent");
 app.use(logfmt.requestLogger());
-app.use(cors);
+app.use(cors());
 app.get('*', function(req, res) {
+  console.log('https://raw.githubusercontent.com' +req.url);
   request
   .get('https://raw.githubusercontent.com' +req.url)
   .end(function(error, result){
